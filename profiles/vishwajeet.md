@@ -13,6 +13,7 @@
 ### Challenges solved
 
 - **Hello World Plus** - successfully implemented the suitable solution based on Hello World Plus challenge in java accordingly.
+- **React Lottery Game** - Implemented a beginner friendly project called Lottery game using React
 
 ## 📫 Connect With Me
 
