@@ -1,7 +1,12 @@
 import os, sys
 import getopt 
 
-def convert_word_to_pdf(word_file, pdf_file):
+def convert_word_to_pdf(word_file, pdf_file): 
+    '''
+    Import convert to turn .docx to .pdf
+    word_file : str, path to input .docx file
+    pdf_file : str, path to output .pdf file
+    '''
     try:
         from docx2pdf import convert
     except ImportError:
@@ -9,10 +14,10 @@ def convert_word_to_pdf(word_file, pdf_file):
         sys.exit(1)
 
     try:
-        convert(word_file, pdf_file)
+        convert(word_file, pdf_file) #Use convert function from docx2pdf to turn .docx into .pdf
         print(f"Successfully converted '{word_file}' to '{pdf_file}'")
     except Exception as e:
-        print(f"An error occurred during conversion: {e}")
+        print(f"An error occurred during conversion: {e}") 
 
 def main():
     try:
@@ -21,6 +26,7 @@ def main():
         print("Usage: python Word-PDFConverter.py -w inputfolder -o outputfolder")
         sys.exit(1)
 
+    #Get input and output folder from command line arguments
     for opt, arg in opts:
         if opt == '-w':
             inputfolder = arg
@@ -36,7 +42,9 @@ def main():
 
     counter = 0
     
-    for filename in os.listdir(inputfolder):
+    #Loop through all .docx files until all converted to .pdf 
+    #Keeps track of how many total .docx files converted
+    for filename in os.listdir(inputfolder): 
         if filename.lower().endswith('.docx'):
             f1 = os.path.join(inputfolder, filename)
             f2 = os.path.join(outputfolder, filename[:-5] + ".pdf")
