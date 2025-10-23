@@ -19,9 +19,15 @@ def convert_word_to_pdf(word_file, pdf_file):
     except Exception as e:
         print(f"An error occurred during conversion: {e}") 
 
+def help():
+    print("Usage: Word file (.docx) to PDF file (.pdf) converter")
+    print("-w: input .docx folder.")
+    print("-o: output .pdf folder.")
+    print("-h: display this help message.")
+
 def main():
     try:
-        opts, args = getopt.getopt(sys.argv[1:],'w:o:')
+        opts, args = getopt.getopt(sys.argv[1:],'w:o:h')
     except getopt.GetoptError:
         print("Usage: python Word-PDFConverter.py -w inputfolder -o outputfolder")
         sys.exit(1)
@@ -32,6 +38,12 @@ def main():
             inputfolder = arg
         elif opt == '-o':
             outputfolder = arg
+        elif opt == '-h':
+            help()
+            sys.exit()
+        else:
+            print(f"{opt} is not defined. Please use -h for options list.")
+            sys.exit(3)
     
     if not os.path.exists(inputfolder):
         print(f"{inputfolder} not exist.")
