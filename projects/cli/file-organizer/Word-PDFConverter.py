@@ -26,6 +26,9 @@ def help():
     print("-h: display this help message.")
 
 def main():
+    inputfolder = ""
+    outputfolder = "C:\\conversion_output"
+
     try:
         opts, args = getopt.getopt(sys.argv[1:],'w:o:h')
     except getopt.GetoptError:
@@ -46,10 +49,11 @@ def main():
             sys.exit(3)
     
     if not os.path.exists(inputfolder):
-        print(f"{inputfolder} not exist.")
+        print(f"Input folder called '{inputfolder}' not exist.")
         sys.exit(2)
 
     if not os.path.exists(outputfolder):
+        print(f"Output folder called '{outputfolder}' not exist. Creating new outputfolder.")
         os.makedirs(outputfolder)
 
     counter = 0
